@@ -1,3 +1,6 @@
+using JoseApiRest.Application;
+using JoseApiRest.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+//builder.Services.AddMediatR(typeof(JoseApiRest.Application.Handlers.TaskCommandHandler).Assembly);
+//builder.Services.AddDbContext<DbContext>(options =>
+//    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
@@ -16,6 +25,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
 
 //var summaries = new[]
 //{
