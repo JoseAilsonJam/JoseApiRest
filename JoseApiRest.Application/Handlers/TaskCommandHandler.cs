@@ -2,11 +2,12 @@
 using JoseApiRest.Domain.Entitys;
 using JoseApiRest.Infrastructure.Services.EntityFramework;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace JoseApiRest.Application.Handlers;
 
 public class TaskCommandHandler :
-    IRequestHandler<CreateTaskCommand, int>,
+    IRequestHandler<CreateTaskCommand, TaskItem>,
     IRequestHandler<UpdateTaskCommand, bool>,
     IRequestHandler<DeleteTaskCommand, bool>
 {
@@ -14,7 +15,7 @@ public class TaskCommandHandler :
 
     public TaskCommandHandler(DataContext context) => _context = context;
 
-    public async Task<int> Handle(CreateTaskCommand request, CancellationToken cancellationToken = default)
+    public async Task<TaskItem> Handle(CreateTaskCommand request, CancellationToken cancellationToken = default)
     {
         var task = new TaskItem
         {
@@ -25,7 +26,8 @@ public class TaskCommandHandler :
 
         _context.TaskItems.Add(task);
         await _context.SaveChangesAsync(cancellationToken);
-        return task.Id;
+
+        return task;
     }
 
     public async Task<bool> Handle(UpdateTaskCommand request, CancellationToken cancellationToken = default)
