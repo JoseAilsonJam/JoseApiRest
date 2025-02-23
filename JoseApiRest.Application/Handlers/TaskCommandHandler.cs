@@ -2,7 +2,6 @@
 using JoseApiRest.Domain.Entitys;
 using JoseApiRest.Infrastructure.Services.EntityFramework;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace JoseApiRest.Application.Handlers;
 
@@ -21,7 +20,8 @@ public class TaskCommandHandler :
         {
             Title = request.Title,
             Description = request.Description,
-            CompletionDate = request.CompletionDate
+            CompletionDate = request.CompletionDate,
+            IsCompleted = request.IsCompleted
         };
 
         _context.TaskItems.Add(task);
@@ -39,6 +39,7 @@ public class TaskCommandHandler :
         task.Title = request.Title;
         task.Description = request.Description;
         task.CompletionDate = request.CompletionDate;
+        task.IsCompleted = request.IsCompleted;
 
         await _context.SaveChangesAsync(cancellationToken);
         return true;
