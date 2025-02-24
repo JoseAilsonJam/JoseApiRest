@@ -88,7 +88,7 @@ Esta API tem como objetivo fornecer uma solução simples e escalável para o ge
    ```bash
    dotnet run
    ```
-5. Acesse o Swagger para testar os endpoints: [http://localhost:5000/swagger](http://localhost:44335/swagger)
+5. Acesse o Swagger para testar os endpoints: [http://localhost:44335/swagger](http://localhost:44335/swagger)
 
 ---
 
