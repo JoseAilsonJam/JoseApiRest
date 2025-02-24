@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace JoseApiRest.Domain.Entitys;
 
@@ -7,10 +8,10 @@ public class TaskItem
     public Guid Id { get; set; }
 
     [Required(ErrorMessage = "O título é obrigatório.")]
-    [StringLength(100, ErrorMessage = "O título deve ter no máximo 100 caracteres.")]
+    [StringLength((int)HttpStatusCode.Continue, ErrorMessage = "O título deve ter no máximo 100 caracteres.")]
     public string Title { get; set; } = string.Empty;
 
-    [StringLength(500, ErrorMessage = "A descrição deve ter no máximo 500 caracteres.")]
+    [StringLength((int)HttpStatusCode.InternalServerError, ErrorMessage = "A descrição deve ter no máximo 500 caracteres.")]
     public string Description { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "A data de conclusão é obrigatória.")]
@@ -20,5 +21,14 @@ public class TaskItem
     public TaskItem()
     {
         Id = Guid.NewGuid();
+    }
+
+    public TaskItem(Guid id, string title, string description, DateTime completionDate, bool isCompleted)
+    {
+        Id = id;
+        Title = title;
+        Description = description;
+        CompletionDate = completionDate;
+        IsCompleted = isCompleted;
     }
 }

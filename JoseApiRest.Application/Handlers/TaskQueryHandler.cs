@@ -8,7 +8,7 @@ namespace JoseApiRest.Application.Handlers;
 
 public class TaskQueryHandler :
     IRequestHandler<GetAllTasksQuery, IEnumerable<TaskItem>>,
-    IRequestHandler<GetTaskByIdQuery, TaskItem>
+    IRequestHandler<GetTaskByIdQuery, TaskItem?>
 {
     private readonly DataContext _context;
 
@@ -17,6 +17,6 @@ public class TaskQueryHandler :
     public async Task<IEnumerable<TaskItem>> Handle(GetAllTasksQuery request, CancellationToken cancellationToken = default)
         => await _context.TaskItems.ToListAsync(cancellationToken);
 
-    public async Task<TaskItem> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken = default)
+    public async Task<TaskItem?> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken = default)
         => await _context.TaskItems.FindAsync(request.Id, cancellationToken);
 }

@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TasksController : ControllerBase
+public class TaskController : ControllerBase
 {
     private readonly IMediator _mediator;
-    public TasksController(IMediator mediator) => _mediator = mediator;
+    public TaskController(IMediator mediator) => _mediator = mediator;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()

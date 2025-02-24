@@ -2,8 +2,8 @@
 
 public class Context
 {
-    private DataContext context;
-    private static Context controll;
+    private DataContext? context;
+    private static Context? controll;
 
     public static Context GetInstance
     {

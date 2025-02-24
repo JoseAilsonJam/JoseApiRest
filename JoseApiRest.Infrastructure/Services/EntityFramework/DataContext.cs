@@ -8,5 +8,5 @@ public class DataContext : DbContext
     public DataContext() { }
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-    public DbSet<TaskItem> TaskItems { get; set; }
+    public virtual DbSet<TaskItem> TaskItems { get; set; }
 }
