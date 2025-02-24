@@ -119,7 +119,7 @@ public class TaskControllerTests
 
         var result = await _controller.Update(taskId, command);
 
-        Assert.IsType<OkResult>(result);
+        Assert.IsType<OkObjectResult>(result);
     }
 
     [Fact]

@@ -49,7 +49,7 @@ public class TaskController : ControllerBase
         var updatedTask = await _mediator.Send(command);
         return updatedTask 
             ? Ok(updatedTask) 
-            : NotFound($"Tarefa com ID {id} não encontrada para atualização.");
+            : NotFound(updatedTask);
     }
 
     [HttpDelete("{id}")]
