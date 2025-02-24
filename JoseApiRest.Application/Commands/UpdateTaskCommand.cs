@@ -2,4 +2,4 @@
 
 namespace JoseApiRest.Application.Commands;
 
-public record UpdateTaskCommand(int Id, string Title, string Description, DateTime CompletionDate, bool IsCompleted) : IRequest<bool>;
+public record UpdateTaskCommand(Guid Id, string Title, string Description, DateTime CompletionDate, bool IsCompleted) : IRequest<bool>;

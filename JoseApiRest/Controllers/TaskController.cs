@@ -15,7 +15,7 @@ public class TasksController : ControllerBase
         => Ok(await _mediator.Send(new GetAllTasksQuery()));
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] int id) 
+    public async Task<IActionResult> GetById([FromRoute] Guid id) 
         => Ok(await _mediator.Send(new GetTaskByIdQuery(id)));
 
     [HttpPost]
@@ -26,13 +26,13 @@ public class TasksController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateTaskCommand command)
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateTaskCommand command)
     {
         if (id != command.Id) return BadRequest();
         return Ok(await _mediator.Send(command));
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id) 
+    public async Task<IActionResult> Delete(Guid id) 
         => Ok(await _mediator.Send(new DeleteTaskCommand(id)));
 }

@@ -2,4 +2,4 @@
 
 namespace JoseApiRest.Application.Commands;
 
-public record DeleteTaskCommand(int Id) : IRequest<bool>;
+public record DeleteTaskCommand(Guid Id) : IRequest<bool>;
