@@ -1,10 +1,12 @@
 ﻿using JoseApiRest.Application.Commands;
 using JoseApiRest.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class TaskController : ControllerBase
 {
     private readonly IMediator _mediator;
