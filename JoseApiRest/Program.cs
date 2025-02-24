@@ -30,6 +30,16 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+
 builder.Services.AddScoped<JwtService>();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -69,6 +79,7 @@ builder.Services.AddApplication();
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 app.Services.ApplyMigrations();
 app.UseHttpsRedirection();
 app.UseAuthentication();
