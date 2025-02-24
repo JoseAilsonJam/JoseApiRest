@@ -55,16 +55,18 @@ Esta API tem como objetivo fornecer uma solução simples e escalável para o ge
   "title": "Estudar .NET Core",
   "description": "Revisar conceitos de API RESTful e CQRS.",
   "completionDate": "2025-03-01T00:00:00"
+  "isCompleted": false
 }
 ```
 
 ### ✅ **Exemplo de Resposta (201 Created)**
 ```json
 {
-  "id": "1",
+  "id": "a9a1b761-724f-462a-adf1-ecc9eab97043",
   "title": "Estudar .NET Core",
   "description": "Revisar conceitos de API RESTful e CQRS.",
   "completionDate": "2025-03-01T00:00:00"
+  "isCompleted": false
 }
 ```
 
@@ -86,7 +88,7 @@ Esta API tem como objetivo fornecer uma solução simples e escalável para o ge
    ```bash
    dotnet run
    ```
-5. Acesse o Swagger para testar os endpoints: [http://localhost:5000/swagger](http://localhost:44335/swagger)
+5. Acesse o Swagger para testar os endpoints: [http://localhost:44335/swagger](http://localhost:44335/swagger)
 
 ---
 
